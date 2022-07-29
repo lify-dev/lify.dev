@@ -1,7 +1,7 @@
 ---
 title: Spring 中的事件机制
 date: 2021-05-12
-tags: [sprngboot,event]
+tags: [sprigboot,event]
 categories: [spring]
 ---
 
@@ -32,7 +32,6 @@ public class UserRegisterEvent extends ApplicationEvent{
         super(name);
     }
 }
-复制代码
 ```
 
 ApplicationEvent 是由 Spring 提供的所有 Event 类的基类，为了简单起见，注册事件只传递了 name（可以复杂的对象，但注意要了解清楚序列化机制）。
@@ -52,7 +51,6 @@ public class UserService implements ApplicationEventPublisherAware {
         this.applicationEventPublisher = applicationEventPublisher;
     }
 }
-复制代码
 ```
 
 需要注意的是，服务必须交给 Spring 容器托管。ApplicationEventPublisherAware 是由 Spring 提供的用于为 Service 注入 ApplicationEventPublisher 事件发布器的接口，使用这个接口，我们自己的 Service 就拥有了发布事件的能力。用户注册后，不再是显示调用其他的业务 Service，而是发布一个用户注册事件。
@@ -67,7 +65,6 @@ public class EmailService implements ApplicationListener<UserRegisterEvent> {
         System.out.println("邮件服务接到通知，给 " + userRegisterEvent.getSource() + " 发送邮件...");
     }
 }
-复制代码
 ```
 
 事件订阅者的服务同样需要托管于 Spring 容器，ApplicationListener 接口是由 Spring 提供的事件订阅者必须实现的接口，我们一般把该 Service 关心的事件类型作为泛型传入。处理事件，通过 event.getSource() 即可拿到事件的具体内容，在本例中便是用户的姓名。 其他两个 Service，也同样编写，实际的业务操作仅仅是打印一句内容即可，篇幅限制，这里省略。
@@ -89,7 +86,6 @@ public class EventDemoApp {
         return "success";
     }
 }
-复制代码
 ```
 
 至此，一个电商系统中简单的事件发布订阅就完成了，后面无论如何扩展，我们只需要添加相应的事件订阅者即可。

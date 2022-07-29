@@ -82,7 +82,7 @@ fontsrc = ["'self'", "https://fonts.gstatic.com", "https://cdn.jsdelivr.net/"]
 formaction = ["'self'"]
 framesrc = ["'self'"]
 # 控制哪些图片可以显示
-imgsrc = ["'self'","https://cdn.jsdelivr.net/"]
+imgsrc = ["'self'","https://cdn.jsdelivr.net/","https://git.poker/"]
 objectsrc = ["'none'"]
 stylesrc = [
   "'self'",

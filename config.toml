@@ -1,4 +1,4 @@
-baseURL = "https://www.lify.com"
+baseURL = "https://www.lify.dev"
 title = "Serenity and Eternity"
 theme = "hugo-coder"
 languageCode = "zh-cn"
